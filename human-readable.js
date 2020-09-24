@@ -103,6 +103,10 @@ function postProcessResult(size, unit, options) {
             if (!isNaN(precision)) {
                 resultSize = resultSize.toFixed(precision);
             }
+            else {
+                if (countDecimals(resultSize) > defaultMaxPrecision)
+                    resultSize = resultSize.toFixed(defaultMaxPrecision);
+            }
         }
         else {
             if (countDecimals(resultSize) > defaultMaxPrecision)
@@ -111,11 +115,11 @@ function postProcessResult(size, unit, options) {
     }
     // option: numberOnly
     if (options && options.numberOnly && options.numberOnly === true) {
-        return resultSize;
+        return resultSize.toString();
     }
-    // option: includeWhitespace
-    let excludeWhitespace = (options && options.excludeWhitespace && options.excludeWhitespace == true);
-    return resultSize + (excludeWhitespace ? '' : ' ') + unit;
+    // option: noWhitespace
+    let noWhitespace = (options && options.noWhitespace && options.noWhitespace == true);
+    return resultSize + (noWhitespace ? '' : ' ') + unit;
 }
 
 module.exports.fromBytes = function (bytes, options) {
