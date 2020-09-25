@@ -24,7 +24,7 @@ hr.fromBytes(17238, { mode: 'IEC' });
 hr.fromBytes(17238, { numberOnly: true });
 // '17.24'
 
-hr.fromBytes(17238, { fixedPrecision: '1' });
+hr.fromBytes(17238, { fixedPrecision: 1 });
 // '17.2 kB'
 
 hr.fromBytes(17238, { fullPrecision: true });
