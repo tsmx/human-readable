@@ -70,4 +70,18 @@ describe('human-readable conversion test suite for decimal and IEC units', () =>
         done();
     });
 
+    it('tests the retrieval of available sizes', async (done) => {
+        const hr = require('../human-readable');
+        sizes = hr.availableSizes();
+        expect(Array.isArray(sizes)).toBeTruthy();
+        expect(sizes.length).toBe(6);
+        expect(sizes[0]).toBe('BYTE');
+        expect(sizes[1]).toBe('KBYTE');
+        expect(sizes[2]).toBe('MBYTE');
+        expect(sizes[3]).toBe('GBYTE');
+        expect(sizes[4]).toBe('TBYTE');
+        expect(sizes[5]).toBe('PBYTE');
+        done();
+    });
+
 });

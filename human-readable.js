@@ -49,6 +49,7 @@ sizes[Symbol.iterator] = function* () {
 const factorDecimal = 1000;
 const factorIEC = 1024;
 const defaultMaxPrecision = 2;
+const availableSizes = [...sizes.keys()];
 
 function countDecimals(value) {
     return value % 1 ? value.toString().split(".")[1].length : 0;
@@ -134,4 +135,8 @@ module.exports.fromTo = function (value, fromUnit, toUnit, options) {
     let iecMode = (options && options.mode && options.mode === 'IEC') ? true : false;
     let { size, unit } = calcSize(value, fromUnit, toUnit, iecMode);
     return postProcessResult(size, unit, options);
+}
+
+module.exports.availableSizes = function () { 
+    return availableSizes; 
 }
