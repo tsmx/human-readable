@@ -63,7 +63,7 @@ describe('human-readable conversion test suite for decimal and IEC units', () =>
         done();
     });
 
-    it('tests a failed conversion with unknown units', async (done) => {
+    it('tests a failed conversion with unknown sizes', async (done) => {
         const hr = require('../human-readable');
         expect(hr.fromTo(17.34, 'XBYTE', 'XBYTE')).toMatch(/NaN.*/);
         expect(hr.fromTo(17.34, 'XBYTE', 'XBYTE', { mode: 'IEC' })).toMatch(/NaN.*/);

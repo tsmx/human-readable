@@ -1,7 +1,7 @@
 {
   "name": "@tsmx/human-readable",
   "version": "1.0.0",
-  "description": "Easily create human-readable strings for byte sizes and other units, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units.",
+  "description": "Easily create human-readable strings for byte sizes and other units, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to units.",
   "main": "human-readable.js",
   "scripts": {
     "test": "jest",

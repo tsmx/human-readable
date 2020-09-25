@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.com/tsmx/human-readable.svg?branch=master)](https://travis-ci.org/tsmx/human-readable)
 [![Coverage Status](https://coveralls.io/repos/github/tsmx/human-readable/badge.svg?branch=master)](https://coveralls.io/github/tsmx/human-readable?branch=master)
 
-> Easily create human-readable strings for byte sizes and other units, e.g. `17238` → `17.24 kB`. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units.
+> Easily create human-readable strings for byte sizes and other units, e.g. `17238` → `17.24 kB`. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to units.
 
 For details about the differences of decimal (SI) and binary (IEC) units please refer to [Wikipedia](https://en.wikipedia.org/wiki/Byte).
 
@@ -92,9 +92,9 @@ Default: `false`
 
 If set to true, the whitespace between the number and unit string is omitted. E.g. `10MB` instead of `10 MB`.
 
-### fromTo(value, fromUnit, toUnit, options)
+### fromTo(value, fromSize, toSize, options)
 
-Converts a value from a given size unit to a human-readable string of the target unit. E.g. converting Gigabytes to Megabytes.
+Converts a value from a given size unit to a human-readable string of the target size. E.g. converting Gigabytes to Megabytes.
 
 #### value
 
@@ -102,17 +102,17 @@ Type: `Number`
 
 The value to be converted.
 
-#### fromUnit
+#### fromSize
 
 Type: `String`
 
-The unit `value` has. Must be one out of `availableSizes`.
+The size `value` has. Must be one out of `availableSizes`.
 
-#### toUnit
+#### toSize
 
 Type: `String`
 
-The unit `value` should be converted to. Must be one out of `availableSizes`.
+The size `value` should be converted to. Must be one out of `availableSizes`.
 
 #### options
 

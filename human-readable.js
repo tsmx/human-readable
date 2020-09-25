@@ -55,86 +55,86 @@ function countDecimals(value) {
     return value % 1 ? value.toString().split(".")[1].length : 0;
 }
 
-function calcSize(size, originalUnit, targetUnit, iecMode = false) {
-    let resultSize = NaN;
+function calcFromTo(value, fromSize, toSize, iecMode = false) {
+    let resultValue = NaN;
     let resultUnit = null;
-    if (!sizes.has(originalUnit) || !sizes.has(targetUnit)) {
-        return { size: resultSize, unit: resultUnit };
+    if (!sizes.has(fromSize) || !sizes.has(toSize)) {
+        return { val: resultValue, unit: resultUnit };
     }
-    let original = sizes.get(originalUnit);
-    let target = sizes.get(targetUnit);
+    let original = sizes.get(fromSize);
+    let target = sizes.get(toSize);
     let delta = target.index - original.index;
     let factor = iecMode ? factorIEC : factorDecimal;
     if (delta > 0) {
         // convert to larger unit
-        resultSize = parseFloat(size) / Math.pow(factor, delta);
+        resultValue = parseFloat(value) / Math.pow(factor, delta);
     }
     else if (delta < 0) {
         // convert to smaller unit
-        resultSize = parseFloat(size) * Math.pow(factor, Math.abs(delta));
+        resultValue = parseFloat(value) * Math.pow(factor, Math.abs(delta));
     }
     else {
         // target === original
-        resultSize = parseFloat(size);
+        resultValue = parseFloat(value);
     }
     resultUnit = iecMode ? target.unitIEC : target.unit;
-    return { size: resultSize, unit: resultUnit };
+    return { val: resultValue, unit: resultUnit };
 }
 
-function autoCalcSize(bytes, iecMode = false) {
-    let resultSize = parseFloat(bytes);
+function calcFromBytes(bytes, iecMode = false) {
+    let resultValue = parseFloat(bytes);
     let resultUnit = iecMode ? sizes.get('BYTE').unitIEC : sizes.get('BYTE').unit;
     let factor = iecMode ? factorIEC : factorDecimal;
     for (let [key, value] of sizes) {
         if (bytes >= Math.pow(factor, value.index)) {
-            resultSize = bytes / Math.pow(factor, value.index);
+            resultValue = bytes / Math.pow(factor, value.index);
             resultUnit = iecMode ? value.unitIEC : value.unit;
             break;
         }
     }
-    return { size: resultSize, unit: resultUnit };
+    return { val: resultValue, unit: resultUnit };
 }
 
-function postProcessResult(size, unit, options) {
-    let resultSize = parseFloat(size);
+function postProcessResult(value, unit, options) {
+    let resultValue = parseFloat(value);
     // option: precision, defaultMax: 2 - only if fullPrecision is not present or false!
     if (!(options && options.fullPrecision === true)) {
         if (options && options.hasOwnProperty('fixedPrecision')) {
             let precision = parseInt(options.fixedPrecision);
             if (!isNaN(precision)) {
-                resultSize = resultSize.toFixed(precision);
+                resultValue = resultValue.toFixed(precision);
             }
             else {
-                if (countDecimals(resultSize) > defaultMaxPrecision)
-                    resultSize = resultSize.toFixed(defaultMaxPrecision);
+                if (countDecimals(resultValue) > defaultMaxPrecision)
+                    resultValue = resultValue.toFixed(defaultMaxPrecision);
             }
         }
         else {
-            if (countDecimals(resultSize) > defaultMaxPrecision)
-                resultSize = resultSize.toFixed(defaultMaxPrecision);
+            if (countDecimals(resultValue) > defaultMaxPrecision)
+                resultValue = resultValue.toFixed(defaultMaxPrecision);
         }
     }
     // option: numberOnly
     if (options && options.numberOnly && options.numberOnly === true) {
-        return resultSize.toString();
+        return resultValue.toString();
     }
     // option: noWhitespace
     let noWhitespace = (options && options.noWhitespace && options.noWhitespace == true);
-    return resultSize + (noWhitespace ? '' : ' ') + unit;
+    return resultValue + (noWhitespace ? '' : ' ') + unit;
 }
 
 module.exports.fromBytes = function (bytes, options) {
     // option IEC mode: default = decimal
     let iecMode = (options && options.mode && options.mode === 'IEC') ? true : false;
-    let { size, unit } = autoCalcSize(bytes, iecMode);
-    return postProcessResult(size, unit, options);
+    let { val, unit } = calcFromBytes(bytes, iecMode);
+    return postProcessResult(val, unit, options);
 }
 
-module.exports.fromTo = function (value, fromUnit, toUnit, options) {
+module.exports.fromTo = function (value, fromSize, toSize, options) {
     // option IEC mode: default = decimal
     let iecMode = (options && options.mode && options.mode === 'IEC') ? true : false;
-    let { size, unit } = calcSize(value, fromUnit, toUnit, iecMode);
-    return postProcessResult(size, unit, options);
+    let { val, unit } = calcFromTo(value, fromSize, toSize, iecMode);
+    return postProcessResult(val, unit, options);
 }
 
 module.exports.availableSizes = function () {
