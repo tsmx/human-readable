@@ -99,7 +99,7 @@ function postProcessResult(size, unit, options) {
     let resultSize = parseFloat(size);
     // option: precision, defaultMax: 2 - only if fullPrecision is not present or false!
     if (!(options && options.fullPrecision === true)) {
-        if (options && options.fixedPrecision) {
+        if (options && options.hasOwnProperty('fixedPrecision')) {
             let precision = parseInt(options.fixedPrecision);
             if (!isNaN(precision)) {
                 resultSize = resultSize.toFixed(precision);
@@ -137,6 +137,6 @@ module.exports.fromTo = function (value, fromUnit, toUnit, options) {
     return postProcessResult(size, unit, options);
 }
 
-module.exports.availableSizes = function () { 
-    return availableSizes; 
+module.exports.availableSizes = function () {
+    return availableSizes;
 }

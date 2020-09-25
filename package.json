@@ -1,7 +1,7 @@
 {
   "name": "@tsmx/human-readable",
   "version": "1.0.0",
-  "description": "Easily create human-readable strings for byte sizes and other units, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and IEC (MiB, GiB,..) units.",
+  "description": "Easily create human-readable strings for byte sizes and other units, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units.",
   "main": "human-readable.js",
   "scripts": {
     "test": "jest",
@@ -13,6 +13,17 @@
     "url": "https://github.com/tsmx/human-readable.git"
   },
   "author": "tsmx <dev@tsmx.net>",
+  "keywords": [
+    "human-readable",
+    "bytes",
+    "filesize",
+    "SI",
+    "IEC",
+    "conversion",
+    "decimal",
+    "binary",
+    "pretty-print"
+  ],
   "license": "MIT",
   "devDependencies": {
     "coveralls": "^3.1.0",

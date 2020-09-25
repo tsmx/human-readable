@@ -37,8 +37,8 @@ describe('human-readable options test suite', () => {
 
     it('tests a successful automatic conversion to mega-bytes - options: fixed-precision = 3', async (done) => {
         const hr = require('../human-readable');
-        expect(hr.fromBytes(35899650, { fixedPrecision: '3' })).toBe('35.900 MB');
-        expect(hr.fromBytes(35899650, { mode: 'IEC', fixedPrecision: '3' })).toBe('34.237 MiB');
+        expect(hr.fromBytes(35899650, { fixedPrecision: 3 })).toBe('35.900 MB');
+        expect(hr.fromBytes(35899650, { mode: 'IEC', fixedPrecision: 3 })).toBe('34.237 MiB');
         done();
     });
 
@@ -49,17 +49,24 @@ describe('human-readable options test suite', () => {
         done();
     });
 
+    it('tests a successful automatic conversion to mega-bytes - options: fixed-precision = 0', async (done) => {
+        const hr = require('../human-readable');
+        expect(hr.fromBytes(35899650, { fixedPrecision: 0 })).toBe('36 MB');
+        expect(hr.fromBytes(35899650, { mode: 'IEC', fixedPrecision: 0 })).toBe('34 MiB');
+        done();
+    });
+
     it('tests a successful automatic conversion to mega-bytes - options: full-precision overriding fixed-precision', async (done) => {
         const hr = require('../human-readable');
-        expect(hr.fromBytes(35899650, { fullPrecision: true, fixedPrecision: '3' })).toBe('35.89965 MB');
-        expect(hr.fromBytes(35899650, { mode: 'IEC', fullPrecision: true, fixedPrecision: '3' })).toBe('34.23657417297363 MiB');
+        expect(hr.fromBytes(35899650, { fullPrecision: true, fixedPrecision: 3 })).toBe('35.89965 MB');
+        expect(hr.fromBytes(35899650, { mode: 'IEC', fullPrecision: true, fixedPrecision: 3 })).toBe('34.23657417297363 MiB');
         done();
     });
 
     it('tests a successful automatic conversion to mega-bytes - options: full-precision, number-only overriding fixed-precision and no-whitespace', async (done) => {
         const hr = require('../human-readable');
-        expect(hr.fromBytes(35899650, { fullPrecision: true, fixedPrecision: '3', numberOnly: true, noWhitespace: true })).toBe('35.89965');
-        expect(hr.fromBytes(35899650, { mode: 'IEC', fullPrecision: true, fixedPrecision: '3', numberOnly: true, noWhitespace: true })).toBe('34.23657417297363');
+        expect(hr.fromBytes(35899650, { fullPrecision: true, fixedPrecision: 3, numberOnly: true, noWhitespace: true })).toBe('35.89965');
+        expect(hr.fromBytes(35899650, { mode: 'IEC', fullPrecision: true, fixedPrecision: 3, numberOnly: true, noWhitespace: true })).toBe('34.23657417297363');
         done();
     });
 
