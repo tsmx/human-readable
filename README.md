@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.com/tsmx/human-readable.svg?branch=master)](https://travis-ci.org/tsmx/human-readable)
 [![Coverage Status](https://coveralls.io/repos/github/tsmx/human-readable/badge.svg?branch=master)](https://coveralls.io/github/tsmx/human-readable?branch=master)
 
-> Easily create human-readable strings for byte sizes and other units, e.g. `17238` → `17.24 kB`. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to units.
+> Easily create human-readable strings from byte sizes, e.g. `17238` → `17.24 kB`. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to other sizes.
 
 For details about the differences of decimal (SI) and binary (IEC) units please refer to [Wikipedia](https://en.wikipedia.org/wiki/Byte).
 
