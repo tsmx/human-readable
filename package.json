@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Easily create human-readable strings from byte sizes, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to other sizes.",
   "main": "human-readable.js",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "test": "jest",
     "test-coverage": "jest --coverage",
