@@ -10,6 +10,8 @@
 
 For details about the differences of decimal (SI) and binary (IEC) units please refer to [Wikipedia](https://en.wikipedia.org/wiki/Byte).
 
+Also check out the [full documentation](https://tsmx.net/human-readable/).
+
 ## Usage
 
 ```js

@@ -1,6 +1,6 @@
 {
   "name": "@tsmx/human-readable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easily create human-readable strings from byte sizes, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to other sizes.",
   "main": "human-readable.js",
   "engines": {
@@ -16,6 +16,7 @@
     "type": "git",
     "url": "https://github.com/tsmx/human-readable.git"
   },
+  "homepage": "https://tsmx.net/human-readable/",
   "author": "tsmx <dev@tsmx.net>",
   "keywords": [
     "human-readable",
