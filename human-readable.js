@@ -55,7 +55,7 @@ function countDecimals(value) {
     return value % 1 ? value.toString().split(".")[1].length : 0;
 }
 
-function calcFromTo(value, fromSize, toSize, iecMode = false) {
+function calcFromTo(value, fromSize, toSize, iecMode) {
     let resultValue = NaN;
     let resultUnit = null;
     if (!sizes.has(fromSize) || !sizes.has(toSize)) {
@@ -81,7 +81,7 @@ function calcFromTo(value, fromSize, toSize, iecMode = false) {
     return { val: resultValue, unit: resultUnit };
 }
 
-function calcFromBytes(bytes, iecMode = false) {
+function calcFromBytes(bytes, iecMode) {
     let resultValue = parseFloat(bytes);
     let resultUnit = iecMode ? sizes.get('BYTE').unitIEC : sizes.get('BYTE').unit;
     let factor = iecMode ? factorIEC : factorDecimal;

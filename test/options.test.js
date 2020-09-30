@@ -45,6 +45,7 @@ describe('human-readable options test suite', () => {
     it('tests a successful automatic conversion to mega-bytes - options: fixed-precision NaN, ignored', async (done) => {
         const hr = require('../human-readable');
         expect(hr.fromBytes(35899650, { fixedPrecision: 'ttt' })).toBe('35.90 MB');
+        expect(hr.fromBytes(735, { fixedPrecision: 'ttt' })).toBe('735 B');
         expect(hr.fromBytes(35899650, { mode: 'IEC', fixedPrecision: 'ttt' })).toBe('34.24 MiB');
         done();
     });
