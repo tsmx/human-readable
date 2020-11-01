@@ -44,7 +44,7 @@ sizes.set('PBYTE', {
 
 sizes[Symbol.iterator] = function* () {
     yield* [...this.entries()].sort((a, b) => b[1].index - a[1].index);
-}
+};
 
 const factorDecimal = 1000;
 const factorIEC = 1024;
@@ -52,7 +52,7 @@ const defaultMaxPrecision = 2;
 const availableSizes = [...sizes.keys()];
 
 function countDecimals(value) {
-    return value % 1 ? value.toString().split(".")[1].length : 0;
+    return value % 1 ? value.toString().split('.')[1].length : 0;
 }
 
 function calcFromTo(value, fromSize, toSize, iecMode) {
@@ -85,7 +85,7 @@ function calcFromBytes(bytes, iecMode) {
     let resultValue = parseFloat(bytes);
     let resultUnit = iecMode ? sizes.get('BYTE').unitIEC : sizes.get('BYTE').unit;
     let factor = iecMode ? factorIEC : factorDecimal;
-    for (let [key, value] of sizes) {
+    for (let [, value] of sizes) {
         if (bytes >= Math.pow(factor, value.index)) {
             resultValue = bytes / Math.pow(factor, value.index);
             resultUnit = iecMode ? value.unitIEC : value.unit;
@@ -99,7 +99,7 @@ function postProcessResult(value, unit, options) {
     let resultValue = parseFloat(value);
     // option: precision, defaultMax: 2 - only if fullPrecision is not present or false!
     if (!(options && options.fullPrecision === true)) {
-        if (options && options.hasOwnProperty('fixedPrecision')) {
+        if (options && Object.prototype.hasOwnProperty.call(options, 'fixedPrecision')) {
             let precision = parseInt(options.fixedPrecision);
             if (!isNaN(precision)) {
                 resultValue = resultValue.toFixed(precision);
@@ -128,15 +128,15 @@ module.exports.fromBytes = function (bytes, options) {
     let iecMode = (options && options.mode && options.mode === 'IEC') ? true : false;
     let { val, unit } = calcFromBytes(bytes, iecMode);
     return postProcessResult(val, unit, options);
-}
+};
 
 module.exports.fromTo = function (value, fromSize, toSize, options) {
     // option IEC mode: default = decimal
     let iecMode = (options && options.mode && options.mode === 'IEC') ? true : false;
     let { val, unit } = calcFromTo(value, fromSize, toSize, iecMode);
     return postProcessResult(val, unit, options);
-}
+};
 
 module.exports.availableSizes = function () {
     return availableSizes;
-}
+};
