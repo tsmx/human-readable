@@ -10,7 +10,7 @@
 
 For details about the differences of decimal (SI) and binary (IEC) units please refer to [Wikipedia](https://en.wikipedia.org/wiki/Byte).
 
-Also check out the [full documentation](https://tsmx.net/human-readable/).
+Also check out the [full documentation](https://tsmx.net/human-readable/). If you need to use this package on the client-side in the browser, refer to [this article](https://tsmx.net/npm-packages-browser/).
 
 ## Usage
 
