@@ -1,5 +1,5 @@
 import { expectType } from 'tsd';
-import { availableSizes, fromBytes, calcFromTo, HROptionsType } from './human-readable';
+import { availableSizes, fromBytes, calcFromTo, HROptionsType } from '../human-readable';
 
 const testOptions: HROptionsType = {
     mode: 'IEC',

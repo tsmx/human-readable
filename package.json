@@ -32,5 +32,8 @@
   "devDependencies": {
     "jest": "^27.2.0",
     "tsd": "^0.21.0"
+  },
+  "tsd": {
+    "directory": "test"
   }
 }
