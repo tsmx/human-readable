@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![npm (scoped)](https://img.shields.io/npm/v/@tsmx/human-readable)
 ![node-current (scoped)](https://img.shields.io/node/v/@tsmx/human-readable)
-[![Build Status](https://img.shields.io/github/workflow/status/tsmx/human-readable/git-ci-build)](https://img.shields.io/github/workflow/status/tsmx/human-readable/git-ci-build)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tsmx/human-readable/git-build.yml?branch=master)](https://img.shields.io/github/actions/workflow/status/tsmx/human-readable/git-build.yml?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/tsmx/human-readable/badge.svg?branch=master)](https://coveralls.io/github/tsmx/human-readable?branch=master)
 
 > Easily create human-readable strings from byte sizes, e.g. `17238` → `17.24 kB`. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to other sizes.
