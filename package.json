@@ -11,6 +11,7 @@
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
+  "types": "human-readable.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsmx/human-readable.git"
