@@ -62,7 +62,7 @@ describe('human-readable conversion test suite for decimal and IEC units', () =>
 
     it('tests the retrieval of available sizes', async () => {
         const hr = require('../human-readable');
-        sizes = hr.availableSizes();
+        const sizes = hr.availableSizes();
         expect(Array.isArray(sizes)).toBeTruthy();
         expect(sizes.length).toBe(6);
         expect(sizes[0]).toBe('BYTE');
