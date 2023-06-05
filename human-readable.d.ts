@@ -11,7 +11,7 @@ export type HRSizeType = "BYTE" | "KBYTE" | "MBYTE" | "TBYTE" | "PBYTE";
 
 export function fromBytes(bytes: number, options: HROptionsType): string;
 
-export function calcFromTo(
+export function fromTo(
   bytes: number,
   fromSize: HRSizeType,
   toSize: HRSizeType,
