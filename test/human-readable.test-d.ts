@@ -1,5 +1,5 @@
 import { expectType } from 'tsd';
-import { availableSizes, fromBytes, calcFromTo, HROptionsType } from '../human-readable';
+import { availableSizes, fromBytes, fromTo, HROptionsType } from '../human-readable';
 
 const testOptions: HROptionsType = {
     mode: 'IEC',
@@ -10,4 +10,4 @@ expectType<string[]>(availableSizes());
 
 expectType<string>(fromBytes(1024, testOptions));
 
-expectType<string>(calcFromTo(1024, 'KBYTE', 'MBYTE', undefined));
+expectType<string>(fromTo(1024, 'KBYTE', 'MBYTE', undefined));
