@@ -7,7 +7,7 @@ export interface HROptionsType {
   fullPrecision?: boolean;
   noWhitespace?: boolean;
 }
-export type HRSizeType = "BYTE" | "KBYTE" | "MBYTE" | "TBYTE" | "PBYTE";
+export type HRSizeType = "BYTE" | "KBYTE" | "MBYTE" | "GBYTE" | "TBYTE" | "PBYTE";
 
 export function fromBytes(bytes: number, options: HROptionsType): string;
 
