@@ -1,6 +1,6 @@
 {
   "name": "@tsmx/human-readable",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Easily create human-readable strings from byte sizes, e.g. 17238 --> 17.24 kB. Supports decimal (MB,GB,..) and binary (MiB, GiB,..) units as well as user-defined conversion from/to other sizes.",
   "main": "human-readable.js",
   "engines": {
