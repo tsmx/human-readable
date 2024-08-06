@@ -1,8 +1,6 @@
 const { configs } = require('@eslint/js');
 const jest = require('eslint-plugin-jest');
 
-let _test = 0;
-
 module.exports = [
     configs.recommended,
     {
