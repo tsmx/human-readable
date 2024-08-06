@@ -7,7 +7,7 @@ module.exports = [
     configs.recommended,
     {
         languageOptions: {
-            ecmaVersion: 2018,
+            ecmaVersion: 'latest',
             sourceType: 'commonjs',
             globals: { Atomics: 'readonly', SharedArrayBuffer: 'readonly' }
         },
